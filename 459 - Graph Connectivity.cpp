@@ -10,6 +10,12 @@ using namespace std;
 
 int main()
 {
-	cout << "Hello World" << endl;
+	int cases = 0;
+	cin >> cases;
+	
+	for (int i = 0; i < cases; i++)
+	{
+		return 1;
+	}
 	return 0;
 }
