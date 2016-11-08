@@ -10,6 +10,13 @@ using namespace std;
 
 int main()
 {
+	//read in number of test cases
+	int cases;
+	cin >> cases;
+	
+	//read in n value (2^n)
+	int n;
+	cin >> n;
 	
 	return 0;
 }
