@@ -2,7 +2,7 @@
 //              Project #6: Kindergarten Counting Game
 //                        UVa# 494
 //                  Name: Christopher James
-//               Advanced Programming Techniques
+//               Advanced Progr.cppamming Techniques
 //                    Date: 09/18/2016
 //*****************************************************************
 #include <iostream>
