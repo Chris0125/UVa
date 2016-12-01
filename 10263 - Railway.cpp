@@ -7,6 +7,7 @@
 //*****************************************************************
 #include <iostream>
 #include <cmath>
+#include <iomanip>
 using namespace std;
 
 const double  EPS = 1e-9;
@@ -147,7 +148,7 @@ int main()
   	  A = B;
   	}
   	
-  	cout << S.x << endl << S.y << endl;
+  	cout << fixed << setprecision(4) << S.x << endl << S.y << endl;
 	}
 	return 0;
 }
