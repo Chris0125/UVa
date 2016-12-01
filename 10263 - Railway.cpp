@@ -1,11 +1,12 @@
 //**************************************************************
-//					Project #25: Railway
+//                  Project #25: Railway
 //                        UVa# 10263
 //                  Name: Christopher James
 //               Advanced Programming Techniques
 //                    Date: 11/29/2016
 //*****************************************************************
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 const double  EPS = 1e-9;
@@ -93,9 +94,61 @@ double Dist_To_Line(Point p, Point a, Point b, Point&c)
 	return dist(p, c);
 }
 
+double Dist_To_LineSegment(Point p, Point a, Point b, Point&c)
+{
+	vec ap(a, p), ab(a, b);
+	double u = dot(ap, ab) / (ab.x*ab.x + ab.y* ab.y);
+	if (u < 0.0)
+	{
+	  c = Point(a.x,a.y);
+	  return dist(p,a);
+	}
+	if (u > 1.0)
+	{
+	  c = Point(b.x,b.y);
+	  return dist(p,b);
+	}
+	return Dist_To_Line(p,a,b, c);
+}
+
 int main()
 {
-	
+	float Xm, Ym;
+	while(cin >> Xm)
+  {
+  	cin>> Ym;
+  	int n, Px, Py;
+  	cin >> n;
+  	
+  	Point M(Xm,Ym);
+  	
+  	double mindist = 10000000000.0;
+  	double distance;
+  	
+  	Point A;
+  	Point B;
+  	Point C;
+  	Point S;
+  	cin >> A.x >> A.y;
+  	
+  	
+  	for (int i = 0; i < n; i++)
+  	{
+  	 
+  	  cin >> B.x >> B.y;
+  	  
+  	  distance = Dist_To_LineSegment(M,A,B,C);
+  	  
+  	  if (distance < mindist)
+  	  {
+  	    mindist = distance;
+  	    S = C;
+  	  }
+  	  A = B;
+  	}
+  	
+  	cout << S.x << endl << S.y << endl;
+	}
 	return 0;
 }
 
