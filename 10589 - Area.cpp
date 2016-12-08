@@ -5,8 +5,8 @@ using namespace std;
 
 int main()
 {
-	int n;
-	double a, a2, M = 0.0;
+	int n, M = 0;
+	double a, a2;
 	double area = 0;
 	while (cin >> n >> a)
 	{
