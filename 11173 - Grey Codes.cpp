@@ -7,6 +7,7 @@
 //*****************************************************************
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 int main()
@@ -15,22 +16,20 @@ int main()
 	int cases;
 	cin >> cases;
 
-	//read in n value (2^n)
-	int n,k;
-	cin >> n >> k;
-
-	vector<vector<bool>>bits(n);
-	for (int i = 0; i < k; i++)
+	//For each case
+	for (int i = 0; i < cases; i++)
 	{
-		bits[0].push_back(0);
-		bits[1].push_back(1);
+		//read in the values
+		int n, k, ans;
+		cin >> n >> k;
 
-		bits[2].push_back(1);
-		bits[3].push_back(0);
+		//Short cut:
+		//A gray code of n can be calculated by EXORing the bits
+		//with the bits of the value n/2. 
+		ans = k ^ (k / 2);
+		cout << ans << endl;
 	}
 	
-
 	
-
 	return 0;
 }
