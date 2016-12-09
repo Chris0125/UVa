@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n;
+
+	//while we can read in numbers and it is not 0
+	while (cin >> n && n!=0)
+	{
+		//declare array: N < 10^4
+		int Arr[10000];
+
+		//Read each number into array
+		for (int i = 0; i < n; i++) 
+		{
+			cin >> Arr[i];
+		}
+
+		//Set end up numbers to beginning two of numbers
+		Arr[n] = Arr[0];
+		Arr[n+1] = Arr[1];
+
+		//bools to check peaks
+		bool down = false;
+		bool up = false;
+
+		//if previous is less than current, local max
+		if (Arr[0] < Arr[1]) 
+			up = true;
+		//else local min
+		else 
+			down = true;
+		
+		//add one to num of peaks
+		int peaks = 1;
+
+		//then for rest of the peaks
+		for (int i = 2; i <= n; i++) 
+		{
+			//if we had a up peak and there is a down peak next
+			if (up && (Arr[i - 1] > Arr[i]))
+			{
+				//add to peaks
+				peaks++;
+				
+				//set up to false and down to true
+				up = false;
+				down = true;
+			}
+			//if we had a down peak and there is an up peak next
+			else if (down && (Arr[i - 1] < Arr[i])) 
+			{
+				//add to peaks
+				peaks++;
+				
+				//set up to true and down to false
+				up = true;
+				down = false;
+			}
+		}
+		//if we have  an up peak and we are still going up
+		if (up && Arr[n] < Arr[n + 1]) 
+			//remove one from peaks
+			peaks--;
+		//and if we had a down peak and we are still going up
+		else if(down && Arr[n] > Arr[n + 1]) 
+			//remove one from peaks
+			peaks--;
+		
+		//output number of peaks
+		cout << peaks << endl;
+	}
+	return 0;
+}
